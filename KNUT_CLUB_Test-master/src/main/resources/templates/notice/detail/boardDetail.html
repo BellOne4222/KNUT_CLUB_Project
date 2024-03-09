@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>자세한 페이지</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/boardDetail.css">
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+
+</head>
+<body>
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="row">
+    <div class="leftcolumn" th:each="b : ${boardList}">
+        <form th:action="@{/board/boardDetail}" method="post" onsubmit="return deleteCheck()">
+            <div class="card">
+                <input type="hidden" name="del_num" th:value="${b.num}">
+                <div class="detailheader">
+                    <h2 th:text="${b.title}">제목</h2>
+                    <div class="list">
+                        <ul class="detailheaderlist">
+                            <th:block th:if="${b.chk == true}">
+                                <li th:text="'작성자:' + '익명'">작성자></li>
+                            </th:block>
+                            <th:block th:if="${b.chk == false}">
+                                <li th:text="'작성자:' + ${b.writer}">작성자></li>
+                            </th:block>
+                            <li th:text="'조회수 : ' + ${b.views}">조회 수 : 0</li>
+                            <li th:text="'등록일:' + ${b.date}">작성일></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="detailcontent" style="height:auto; ">
+                    <th:block th:if="${not #strings.isEmpty(b.img)}">
+                        <img th:if="${b.img} != '/attachFile/'" th:src="${b.img}" style="width: 700px; height: 500px; border-radius: 10px; margin-top: 40px; margin-bottom: 20px; margin-right: 20px;"  />
+                    </th:block>
+                    <p class="noticect" th:utext="${b.content}">글 내용</p>
+                </div>
+                <div class="modifyZone" th:if="${b.writer == name or b.writer == adminName}">
+                    <button type="button" th:onclick="|location.href='@{/board/update(num=${b.num})}'|"
+                            th:text="수정"></button>
+                    <button type="submit" th:text="삭제"></button>
+
+                </div>
+            </div>
+        </form>
+
+
+            <div class="commentWrapper">
+                <div class="commentSpace" >
+                    <form method="post" action="/writeComment" onsubmit="return writeCheck()">
+                        <div class="commentZone">
+                            <input type="hidden" name="board_num" th:value="${b.num}">
+                            <div class="zoneFirst"><h3>댓글</h3></div><div class="zoneMiddle"><input type="text" name="comment" maxlength="500" placeholder="500자까지 입력가능합니다."></div>
+                            <div class="zoneLast"><input type="submit" id="cmtBtn" value="작성"></div>
+                        </div>
+                    </form>
+                    <form method="post" action="/deleteComment" onsubmit="return deleteCheck()">
+                        <div class="commentSetter" >
+                            <div class="commentLiner"th:each="c : ${commentList}">
+                                <input type="hidden" name="board_num" th:value="${b.num}">
+                                <input type="hidden" name="comment_num" th:value="${c.num}">
+                                <div id="writer" th:text="${c.writer}">작성자</div>
+                                <div id="content" th:text="${c.content}">내용</div>
+                                <div id="date" th:text="${c.date}">작성 날짜</div>
+                                <!-- 임의로 만든 버튼 -->
+                                <th:block th:if="${session.name} == ${c.writer}">
+                                    <div class="zoneLast">
+                                        <input type="submit" id="cmtBtn" value="삭제">
+                                    </div>
+                                </th:block>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--<th:block th:insert="fragments/footer :: footerFragment"></th:block>-->
+
+</body>
+</html>

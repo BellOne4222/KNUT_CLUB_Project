@@ -1,0 +1,229 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 1500px;
+
+}
+
+/* header */
+
+header{
+    width: 100%;
+    height: 100px;
+}
+header h1{
+
+    margin-top: 30px;
+    color: rgb(109, 13, 13);
+    font-size: 50px;
+    text-align: center;
+}
+
+/* section */
+
+section{
+    width: 100%;
+    float: left;
+}
+
+.Toindex{
+    text-decoration: none;
+    color: rgb(109, 13, 13);;
+
+}
+.tab {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+
+
+
+
+.tablinks {
+    float: left;
+    width: 50%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border-top: 5px solid #ccc;
+    border-radius: 10px;
+}
+
+.tablinks.active {
+    color: white;
+    background-color: rgb(109, 13, 13);
+    border-bottom: 2px solid rgb(109, 13, 13);
+    border-radius: 10px;
+
+}
+
+.login-form{
+    height: 700px;
+    width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30px;
+    position: relative;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 20px 30px 30px 10px gray;
+
+}
+
+.login-form .login-Form{
+    margin-top: 100px;
+
+
+
+}
+
+.login-form .login-Form h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.login-form .login-Form .login-Form-inner{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.textfield{
+    text-decoration: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 10px;
+
+}
+
+
+
+#btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to right, rgb(109, 13, 13), red);
+    background-position: left;
+    background-size: 200%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    width: 400px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.links-btn{
+    background: linear-gradient(to right, rgb(109, 13, 13), red);
+    background-position: left;
+    background-size: 200%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-inline: 20px;
+    width: 400px;
+    height: 50px;
+    font-size: 25px;
+    margin-top: 10px;
+
+
+}
+
+#second-btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to right, rgb(109, 13, 13), red);
+    background-position: left;
+    background-size: 200%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+    border-radius: 5px;
+
+    width: 400px;
+    height: 50px;
+    margin-top: 50px;
+    font-size: 25px;
+
+}
+
+
+
+#btn:hover{
+    background-position: right;
+}
+
+.links-btn:hover{
+    background-position: right;
+}
+
+.login-Form-inner{
+    text-align: center;
+
+}
+
+#studentID{
+    width: 400px;
+    margin-bottom: 50px;
+    border: none;
+    border-bottom: 2px solid rgb(109, 13, 13);
+    outline: none;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+#id{
+    width: 400px;
+    margin-bottom: 50px;
+    border: none;
+    border-bottom: 2px solid rgb(109, 13, 13);
+    outline: none;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+#password{
+    border: none;
+    width: 400px;
+    border-bottom: 2px solid rgb(109, 13, 13);
+    margin-bottom: 50px;
+    outline: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.findBtn{
+    background: linear-gradient(to right, rgb(109, 13, 13), red);
+    background-position: left;
+    background-size: 200%;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    margin-inline: 50px;
+    width: 400px;
+    height: 50px;
+    font-size: 25px;
+    margin-top: 50px;
+
+}
+

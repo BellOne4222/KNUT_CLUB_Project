@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/findPw.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>비밀번호 찾기</title>
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+
+<div class="row">
+    <div class="column middle">
+        <h1>비밀번호 찾기</h1>
+        <div class="findWrap">
+            <div class="fake"></div>
+            <div class="content" th:object="${findPw}">
+                <form method="post" action="/findPw">
+                    <h3>학번 :</h3> <input type="text" class="int" th:field="*{studentId}" id="fPw" maxlength="7" placeholder="학번을 입력해 주세요.">
+                    <br>
+                    <h3>이름 :</h3> <input type="text" class="int" th:field="*{name}" id="fNm" maxlength="20" placeholder="이름을 입력해 주세요.">
+                    <input type="submit" class="fpwBtn" id="fpwBtn" value="확인">
+                </form>
+                <button onclick="location.href='/login'">로그인 페이지로 이동</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

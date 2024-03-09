@@ -1,0 +1,95 @@
+
+.leftcolumn {
+    float: left;
+    width: 75%;
+    padding-left: 20px;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    background-color: #f1f1f1;
+
+}
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 3px solid #bbb;
+}
+.card h2{
+    padding-bottom: 30px;
+    text-decoration: underline;
+    text-underline-offset : 10px;
+
+}
+.card p{
+    font-weight: bold;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+.clubimg{
+    width: 100%;
+    height: 100%;
+}
+
+.clubimg img{
+    width: 300px;
+    height: 300px;
+    margin-left: 80px;
+
+}
+
+.main{
+    text-align: center;
+}
+.leftcolumn h2{
+    text-align: center;
+}
+.rightcolumn h2{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.joinbtn{
+    margin-left: 210px;
+    width: 60px;
+    height: 40px;
+    background-color: #ddd;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.joinbtn:hover{
+    color:#fff;
+    box-shadow: 200px 0 0 0 rgba(0,0,0,0.25) inset, -200px 0 0 0 rgba(0,0,0,0.25) inset;
+
+}
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>동아리 생성</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/newClub.css}">
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('img').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('img').src = "";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+<th:block th:insert="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="row" th:object="${newClub}">
+    <form th:method="post" th:action="@{/club/create}" enctype="multipart/form-data">
+        <div class="column side">
+            <div class="Choice">
+                <h3>동아리 사진 선택</h3>
+                <div id="clubImg">
+                    <img id="img" style="width: 200px; height: 200px;" />
+                </div>
+                <input type="file" name="attachFile" onchange="readURL(this)";>
+            </div>
+        </div>
+        <div class="column middle">
+            <h2>동아리 생성 양식</h2>
+    <!--        <form th:method="post" th:action="@{/club/create}">-->
+                <table class="table-fill">
+                    <thead>
+                    <tr>
+                        <th class="text-left"></th>
+                        <th class="text-left"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    <tr>
+                        <td class="text-left">동아리명</td>
+                        <td class="text-left"><input type="text" th:field="*{clubName}" id="clubName"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">캠퍼스</td>
+                        <td class="text-left"><input type="text" th:field="*{campus}" id="campus"></td>
+                    </tr>
+                    <!-- 드롭박스... -->
+                    <tr>
+                        <td class="text-left">분야</td>
+                        <td class="text-left"><input type="text" th:field="*{type}" id="type"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">활동</td>
+                        <td class="text-left"><input type="text" th:field="*{activity}" id="activity"></td>
+                    </tr>
+            <!--            <tr>-->
+            <!--                <td class="text-left">전화번호</td>-->
+            <!--                <td class="text-left"><input type="text" id="pNum"></td>-->
+            <!--            </tr>-->
+            <!--            <tr>-->
+            <!--                <td class="text-left">이메일</td>-->
+            <!--                <td class="text-left"><input type="text" id="eMail"></td>-->
+            <!--            </tr>-->
+                    <tr>
+                        <td class="text-purpose">홍보</td>
+                        <td class="text-purpose"><textarea type="text" th:field="*{promotion}" id="Purpose"></textarea></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btnZone">
+                    <input type="button" value="목록" onclick="location.href='/clubJoin';"></input>
+                    <input type="submit" id="newClubok" value="생성">
+                </div>
+        </div>
+    </form>
+    </div>
+    <div class="column side">
+        <h2></h2>
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/write.css">
+
+    <!--  summernote   -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <!--    JavaScript-->
+    <script type="text/javascript" th:src="@{/js/summerNote.js}"></script>
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+    <title>동아리 관리 프로그램</title>
+
+</head>
+<body>
+<article>
+    <div class="container" role="main" th:each="p : ${profile}">
+        <h2>동아리 가입 신청</h2>
+        <form name="form" id="form" role="form" method="post" action="/clubJoin/membership" onsubmit="return joinCheck()">
+            <div class="mb-3">
+                <label>동아리 이름</label>
+                <input type="text" class="form-control" name="club" th:value="${clubName}" readonly>
+            </div>
+            <div class="mb-3">
+                <label>이름</label>
+                <input type="text" class="form-control" name="name" th:value="${p.name}" readonly>
+            </div>
+            <div class="mb-3">
+                <label>학과</label>
+                <input type="text" class="form-control" name="department" th:value="${p.department}" readonly>
+            </div>
+            <div class="mb-3">
+                <label>휴대전화</label>
+                <input type="text" class="form-control" name="phone" th:value="${p.phone}" readonly>
+            </div>
+            <div>
+                <label>지원동기</label>
+                <textarea id="summernote" name="content"></textarea>
+            </div>
+            <script>
+                $('summernote').val("${content.SUMMERNOTE}");
+                $('#summernote').summernote({
+                    placeholder: '내용',
+                    tabsize: 2,
+                    height: 300,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ]
+                });
+            </script>
+            <div>
+                <!-- onclick="location.href='/VIEW/noticeWrite/noticeWrite'" -->
+                <button type="submit" class="btn float-right btn btn-sm btn-primary" id="btnSave">저장</button>
+                <button type="button" class="btn float-right btn btn-sm btn-primary" style="margin-right: 10px;"
+                        onclick="location.href='/clubJoin'" id="btnList">목록
+                </button>
+            </div>
+        </form>
+    </div>
+</article>
+
+</body>
+</html>

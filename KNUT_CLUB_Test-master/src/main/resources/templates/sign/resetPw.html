@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/resetPw.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>비밀번호 재설정</title>
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+
+<div class="row">
+    <div class="column middle">
+        <h1>비밀번호 재설정</h1>
+        <div class="findWrap">
+            <div class="fake"></div>
+            <div class="content" th:object="${resetPw}">
+                <form method="post" action="/resetPw">
+                    <h3>새로운 비밀번호 : </h3>
+                    <input type="password" class="int" th:field="*{password}" id="nPw" maxlength="20" placeholder="새로운 비밀번호를 입력해주세요.">
+                    <br>
+                    <h3>비밀번호 확인 : </h3>
+                    <input type="password" class="int" th:field="*{password_}" id="npPw" maxlength="20" placeholder="비밀번호를 다시 입력해주세요.">
+                    <span class="error_next_box"></span>
+                    <input type="submit" class="fpwBtn" id="fpwBtn" value="확인" onclick="location.href='/login'">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/resetPw.js"></script>
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

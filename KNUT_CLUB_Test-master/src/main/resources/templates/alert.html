@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<title>알림창</title>
+<script th:inline="javascript">
+
+    var message = [[${message}]];
+    var url = [[${url}]];
+
+    if(!message) {
+        location.replace(url);
+    }
+    else {
+        alert(message);
+        location.replace(url);
+    }
+
+</script>
+</body>
+</html>

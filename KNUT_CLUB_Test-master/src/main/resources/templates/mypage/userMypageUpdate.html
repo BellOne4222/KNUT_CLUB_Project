@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>마이페이지</title>
+    <link rel="stylesheet" th:href="@{/css/mypage.css}">
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('img').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('img').src = "";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="areaLine"></div>
+
+<div class="row" th:each="profile : ${profile}">
+    <form th:action="@{/mypage/update}" method="post" enctype="multipart/form-data" onsubmit="return updateCheck()">
+    <div class="leftcolumn">
+        <div class="card">
+<!--            <form th:action method="post" enctype="multipart/form-data" onsubmit="return updateCheck()">-->
+                <table class="table-fill">
+                    <thead>
+                    <tr>
+                        <th class="text-left"></th>
+                        <th class="text-left"></th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    <tr>
+                        <td class="text-left">이름</td>
+                        <td class="text-left"><input type="text" name="name" id="name" th:placeholder="${profile.name}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">학번</td>
+                        <td class="text-left"><input type="text" name="studentID" id="id" th:placeholder="${profile.studentID}" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">이메일</td>
+                        <td class="text-left"><input type="text"  name="email" id="email" th:placeholder="${profile.email}"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">학과</td>
+                        <td class="text-left"><input type="text"  name="department" id="department" th:placeholder="${profile.department}"></td>
+                    </tr>
+                    <tr th:if="${profile.club} == false">
+                        <td class="text-left" >가입된 동아리</td>
+                        <td class="text-left">없음</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">가입된 동아리</td>
+                        <td class="text-left"><input type="text"  name="club" id="club" th:placeholder="${profile.club}" readonly></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="btnZone">
+                    <input type="submit" value="수정"></input>
+                </div>
+<!--            </form>-->
+        </div>
+    </div>
+    <div class="rightcolumn">
+<!--        <div class="card">-->
+<!--            <form>-->
+<!--                <h2>About Me</h2>-->
+<!--                <div id="proImg"><img th:src="${profile.img}" style="width: 200px; height: 200px; margin-right: 20px; margin-bottom: 20px;  border-radius: 20px"/></div>-->
+<!--                <input type="file" name="attachFile">-->
+<!--                <p th:text="${profile.name} + '님의 마이페이지입니다'" style="margin-top: 20px;">이름</p>-->
+<!--            </form>-->
+<!--        </div>-->
+        <div class="card" th:if="${not #strings.isEmpty(profile.img)}">
+            <!--            <form th:action="@{/mypage/uploadProfile}" method="post" enctype="multipart/form-data">-->
+            <h2>About Me</h2>
+            <div id="proImg" >
+                <img th:src="${profile.img}"  id="img" style="margin-right: 20px; margin-bottom: 20px; width: 200px; height: 200px;" />
+            </div>
+<!--            <input type="hidden" name="studentId" th:value="${profile.clubId}">-->
+            <input type="file" name="attachFile" onchange="readURL(this)";>
+            <!--                <input type="submit" value="선택 완료" style="width: 75px; height: 25px; padding: 2px;">-->
+            <p th:text="${profile.name} + '의 마이페이지입니다'" style="margin-top: 40px;">이름</p>
+            <!--            </form>-->
+        </div>
+        <div class="card" th:if="${#strings.isEmpty(profile.img)}">
+            <!--            <form th:action="@{/mypage/uploadProfile}" method="post" enctype="multipart/form-data">-->
+            <h2>About Me</h2>
+            <div id="proImg" >
+                <img src="/img/mypage/profile2.PNG"  id="img" style="margin-right: 20px; margin-bottom: 20px; width: 200px; height: 200px;" />
+            </div>
+<!--            <input type="hidden" name="studentId" th:value="${profile.clubId}">-->
+            <input type="file" name="attachFile" onchange="readURL(this)" ;>
+<!--            <input type="submit" value="선택 완료" style="width: 75px; height: 25px; padding: 2px;">-->
+            <p th:text="${profile.name} + '의 마이페이지입니다'" style="margin-top: 40px;">이름</p>
+            <!--            </form>-->
+        </div>
+    </div>
+    </form>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

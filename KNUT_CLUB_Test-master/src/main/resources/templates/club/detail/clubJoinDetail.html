@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Perfect</title>
+    <link rel="stylesheet" href="/css/clubdetail.css">
+    <meta charset="utf-8">
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+
+<div class="row" th:each="c : ${clubList}">
+    <div class="rightcolumn">
+        <div class="card">
+            <div class="clubimg">
+<!--                <img th:src="${c.img}">-->
+                <th:block th:if="${not #strings.isEmpty(c.img)}">
+                    <img th:src="${c.img}">
+                </th:block>
+                <th:block th:if="${#strings.isEmpty(c.img)}">
+                    <img src="/img/event/event.jpg">
+                </th:block>
+            </div>
+            <h2 th:text="${c.name}" name="name"></h2>
+            <button th:if="${not #strings.equals(session.grade, 'admin')}" type="button" class="joinbtn" th:onclick="|location.href='@{/clubJoin/membership(name=${c.name})}'|">가입신청</button>
+        </div>
+
+    </div>
+    <div class="leftcolumn">
+        <div class="card">
+            <h2 th:text="${c.name}"></h2>
+            <div class="main">
+                <p th:text="${c.type} + ' 동아리'"></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="main">
+                <p th:text="${c.promotion}"></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>이메일 인증</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/mailChk.css">
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+
+<div class="row">
+    <div class="column side">
+        <div class="previousWrapper">
+            <h1>이전 페이지</h1>
+            <input type="button" value="이메일 입력 페이지로 이동" onClick="history.go(-1)">
+        </div>
+    </div>
+    <div class="column middle">
+        <div class="findWrapper">
+            <h1 class="join_title"><label>이메일 인증번호 입력</label></h1>
+            <div id="email-wrap">
+                <div id="domain-first">
+                    <span class="box">
+                        <form th:action="@{/check/mailValid}" method="post">
+                            <input class="input" type="text" name="number">
+                            <button type="submit">인증</button>
+                        </form>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

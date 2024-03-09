@@ -1,0 +1,195 @@
+/*사이드 바 CSS*/
+* {
+    padding:0;
+    margin:0;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+input[id="menuicon"] {
+    display:none;
+}
+input[id="menuicon"] + ul {
+    display:block;
+    position:fixed;
+    right:0;top:10%;
+    transform:translateY(-50%);
+    transition:all .35s;
+    text-align:right;
+}
+input[id="menuicon"] + ul > li {
+    display:block;
+    width:50px;
+    height:50px;
+    border:1px solid #f1f1f1;
+    position:relative;
+    margin-top:-1px;
+}
+input[id="menuicon"] + ul > li > a {
+    display:block;
+    width:auto;
+    height:50px;
+    overflow:hidden;
+    transition:all .35s;
+}
+input[id="menuicon"] + ul > li > label {
+    display:block;
+    cursor:pointer;
+    width:auto;
+    height:50px;
+    background:#dadada;
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span {
+    display:block;
+    position:absolute;
+    width:50%;
+    height:3px;
+    border-radius:30px;
+    background:#333;
+    transition:all .35s;
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {
+    top:30%;
+    left:50%;
+    transform:translateX(-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(2) {
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom:30%;
+    left:50%;
+    transform:translateX(-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(2) a .icon {
+    background:url('./img/search.png') center center no-repeat;
+    background-size:50%;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    vertical-align:middle;
+}
+input[id="menuicon"] + ul > li:nth-child(3) a .icon {
+    background:url('./img/sand-clock.png') center center no-repeat;
+    background-size:50%;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    vertical-align:middle;
+}
+input[id="menuicon"]:checked + ul {
+    z-index:2;
+    right:300px;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label {
+    z-index:2;
+    right:300px;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(2) {
+    opacity:0;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom:50%;
+    left:50%;
+    transform:translate(-50%,50%) rotate(-45deg);
+}
+div[class="sidebar"] {
+    width:300px;
+    height:100%;
+    background: rgb(244, 242, 242);
+    position:fixed;
+    top:0;
+    right:-300px;
+    z-index:1;
+    transition:all .35s;
+}
+input[id="menuicon"]:checked + ul + div {
+    right:0;
+}
+.sidebar .profile{
+    background-color: rgb(149, 18, 18);
+    text-align: center;
+    height: 200px;
+}
+.sidebar .profile img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+
+}
+.sidebar .profile h1{
+    color: #ddd;
+    margin:  0 5px;
+    padding-bottom: 10px;
+    padding-top: 30px;
+}
+.sidebar .profile h2{
+    color: #ddd;
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+.sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+
+    color: black;
+    font-size: 16px;
+    position: relative;
+}
+.sidebar ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.sidebar ul li a:hover{
+    color: black;
+    background:white;
+    border-right: 2px solid black;
+}
+.sidebar ul li a:hover .icon,
+.sidebar ul li a.active .icon{
+    color: #0c7db1;
+}
+.sidebar ul li a:hover:before,
+.sidebar ul li a.active:before{
+    display: block;
+}
+
+.profile button{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px gray;
+}
+.profile button:focus{
+    outline:0;
+}
+.profile button:hover{
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 4px wheat;
+}
+.profile h2{
+    margin-bottom: 20px;
+}
+.profile p{
+    margin-bottom: 50px;
+}
+
+.login{
+    margin-right: 20px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>자유게시판</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/board.css">
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+</head>
+
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="row">
+    <div class="column side">
+        <ul class="sidemenu">
+            <h2>Menu</h2>
+            <li><a href="/notice">공지사항</a></li>
+            <li id="now"><a href="/board">자유게시판</a></li>
+            <li><a href="/clubJoin">동아리</a></li>
+            <li><a href="/aboutClub">소개</a></li>
+            <li><a href="/event">행사</a></li>
+        </ul>
+    </div>
+
+    <div class="column middle">
+        <h1><a href="/board">자유게시판</a></h1>
+
+        <form action="/board" method="get">
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    <select id="searchBox" class="custom-select d-block w-100" name="select">
+                        <option value="title" th:selected="${#strings.equals(param.select, 'title')}">제목</option>
+                        <option value="writer" th:selected="${#strings.equals(param.select, 'writer')}">작성자</option>
+                    </select> <input type="text" class="form-control" name="word"
+                                     placeholder="검색어" th:selected="${#strings.equals(param.word, '')}" required>
+                    <!--                           placeholder="" th:value="${param.word}" required>-->
+                    <input type="submit" value="검색">
+                </div>
+            </div>
+        </form>
+
+        <form action="/delBoard" method="post" onsubmit="return deleteCheck()">
+            <table class="noticetable">
+                <tr id="tableheader">
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회</th>
+                    <th scope="cols">선택</th>
+                </tr>
+
+                <tbody th:each="b : ${boardList}">
+                <tr>
+                    <input type="hidden" name="n" th:value="${b.num}">
+                    <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.n}">-</td>
+                    <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.title }"></td>
+                    <th:block th:if="${b.chk == true}">
+                        <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="익명">-</td>
+                    </th:block>
+                    <th:block th:if="${b.chk == false}">
+                        <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.writer}">-</td>
+                    </th:block>
+                    <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.date}">-</td>
+                    <td>0</td>
+                    <th:block th:if="${session.name} == ${b.writer}">
+                        <td><input type="checkbox" name="del_id" th:value="${b.num}"></td>
+                    </th:block>
+                    <th:block th:if="${session.name} != ${b.writer}">
+                        <td><input type="checkbox" name="'del_id" th:value="${b.num}" disabled></td>
+                    </th:block>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+</div>
+
+<div class="margin-top align-center pager">
+    <ul class="pagingwrap">
+        <li class="paging">
+            <div>
+                <th:block th:if="${startNum>1}">
+                    <a th:href="@{/board(p=${(startNum-1)}, search=${param.search}, word=${word})}" th:text="이전"></a>
+                </th:block>
+                <th:block th:unless="${startNum>1}">
+                    <span onclick="alert('이전 페이지가 없습니다.')" th:text="이전"></span>
+                </th:block>
+            </div>
+        </li>
+
+        <li class="paging">
+            <ul class="list">
+                <th:block th:each="i : ${#numbers.sequence(0, 4)}">
+                    <th:block th:if="${(startNum+i) <= lastNum}">
+                        <li><a th:href="@{/board(p=${startNum+i}, search=${param.search}, word=${param.word})}"
+                               th:text="${startNum+i}"></a></li>
+                    </th:block>
+                </th:block>
+            </ul>
+        </li>
+
+        <li class="paging">
+            <div>
+                <th:block th:if="${startNum+4<lastNum}">
+                    <a th:href="@{/board(p=${startNum+5}, search=${param.search}, word=${param.word})}" th:text="다음">다음</a>
+                </th:block>
+                <th:block th:if="${startNum+4>=lastNum }">
+                    <span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.')">다음</span>
+                </th:block>
+            </div>
+        </li>
+    </ul>
+
+    <div class="btnWrapper">
+        <div>
+            <button id="deletebtn" class="btn btn-danger btn-lg btn-block" style="float: right;" type="submit">삭제</button>
+        </div>
+        </form>
+        <div>
+            <button id="writebtn" class="btn btn-success btn-lg btn-block" onclick="location.href='/board/boardWrite'"
+                    style="float:right;" type="submit">글쓰기
+            </button>
+        </div>
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+</body>
+</html>

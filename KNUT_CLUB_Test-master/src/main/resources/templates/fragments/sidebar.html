@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="sideBarFragment">
+    <head>
+        <link rel="stylesheet" th:href="@{/css/sidebar.css}">
+    </head>
+
+    <input type="checkbox" id="menuicon">
+    <ul>
+        <li>
+            <label for="menuicon">
+                <span></span><span></span><span></span>
+            </label>
+        </li>
+    </ul>
+
+    <div class="sidebar">
+        <div class="profile">
+            <th:block th:if="${#strings.isEmpty(session.id)}">
+                <h1 th:text="비회원">비회원</h1>
+                <h2 th:text="없음">없음</h2>
+            </th:block>
+            <th:block th:if="${not #strings.isEmpty(session.id)}">
+                <h1 th:text="${session.name} + '님'">님</h1>
+                <h2 th:text="${session.club}">club</h2>
+            </th:block>
+            <th:block th:if="${#strings.isEmpty(session.id)}">
+                <button class="login" th:onclick="|location.href='@{/login}'|" th:text="로그인">Login</button>
+            </th:block>
+            <th:block th:if="${not #strings.isEmpty(session.id)}">
+                <button class="login" th:onclick="|location.href='@{/logout}'|" th:text="로그아웃">Logout</button>
+            </th:block>
+            <th:block th:if="${#strings.isEmpty(session.id)}">
+                <button class="mypage" th:onclick="|location.href='@{/check}'|" th:text="회원가입">회원가입</button>
+            </th:block>
+            <th:block th:if="${not #strings.isEmpty(session.id)}">
+                <th:block th:if="${#strings.equals(session.grade, 'admin')}">
+                    <button th:onclick="|location.href='@{/mypage/admin}'|" th:text="MyPage">MyPage</button>
+                </th:block>
+                <th:block th:if="${#strings.equals(session.grade, 'user')}">
+                    <button th:onclick="|location.href='@{/mypage}'|" th:text="MyPage">MyPage</button>
+                </th:block>
+            </th:block>
+        </div>
+        <ul>
+            <li>
+                <a th:href="@{/index}" class="active">
+                    <span class="icon"><i class="fas fa-home"></i></span>
+                    <span class="item">Home</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/notice}">
+                    <span class="icon"><i class="fas fa-desktop"></i></span>
+                    <span class="item">공지사항</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/board}">
+                    <span class="icon"><i class="fas fa-user-friends"></i></span>
+                    <span class="item">자유게시판</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/check}">
+                    <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                    <span class="item">회원가입</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/aboutClub}">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span class="item">소개</span>
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/event}">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="item">행사</span>
+                </a>
+            </li>
+            <li th:if="${#strings.equals(session.grade, 'admin')}">
+                <a th:href="@{/event/write}">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="item">행사글 작성</span>
+                </a>
+            </li>
+            <li th:if="${#strings.equals(session.grade, 'admin')}">
+                <a th:href="@{/memberList}">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="item">회원목록</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</th:block>
+</html>

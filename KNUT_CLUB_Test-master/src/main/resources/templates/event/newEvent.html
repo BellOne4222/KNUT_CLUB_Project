@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>행사</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" th:href="@{/css/newEvent.css}">
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('img').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('img').src = "";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+<th:block th:insert="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="divideLine" style="width: 100%; border: 1px solid black;" ></div>
+
+<div class="row" th:object="${eventPost}">
+    <form th:action="@{/event/write}" th:method="post" enctype="multipart/form-data">
+    <div class="rightcolumn" style="padding: 0px; padding-right: 20px;">
+        <div class="card" style="height: 1025px;">
+        </div>
+    </div>
+    <div class="leftcolumn">
+        <div class="card">
+            <div id="eventImg">
+                <!-- th:field="*{img}" -->
+                <img id="img"  style="width: 50%; height: 400px; margin-left: 250px;"/>
+            </div>
+            <input type="file" name="attachFile" onchange="readURL(this)"; style="margin-left: 580px; margin-top: 20px;">
+        </div>
+        <div class="card">
+<!--            <form th:action="@{/event/write}" th:method="post">-->
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>캠퍼스</td>
+                        <td><input type="text" th:field="*{campus}" style="width: 300px; height: 30px; padding: 2px;"></td>
+                    </tr>
+                    <tr>
+                        <td>유형</td>
+                        <td><input type="text" th:field="*{type}" style="width: 300px; height: 30px; padding: 2px;"></td>
+                    </tr>
+                    <tr>
+                        <td>행사명</td>
+                        <td><input type="text" th:field="*{name}" style="width: 300px; height: 30px; padding: 2px;"></td>
+                    </tr>
+                    <tr>
+                        <td>행사 종목</td>
+                        <td><input type="text" th:field="*{activity}" style="width: 300px; height: 30px; padding: 2px;"></td>
+                    </tr>
+                    <tr>
+                        <td>행사 개요</td>
+                        <td><textarea th:field="*{promotion}" style="height: 200px; width: 300px; padding: 2px;"></textarea></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="등록" style="float: right; margin-top:30px; width: 50px; height: 30px;">
+        </div>
+    </div>
+    </form>
+    </div>
+    <div class="rightcolumn">
+        <div class="card" style="height: 1025px;">
+        </div>
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

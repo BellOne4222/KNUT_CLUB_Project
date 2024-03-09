@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <script type="text/javascript" th:src="@{/js/login.js}"></script>
+</head>
+
+<body>
+<header>
+    <h1><a class="Toindex" th:href="@{/index}">KNUT-CLUB</a></h1>
+</header>
+
+<section>
+    <div class="login-form">
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'tab1')">회원</button>
+            <button class="tablinks" onclick="openTab(event, 'tab2')">관리자</button>
+        </div>
+        <!-- 회원 로그인 -->
+        <div id="tab1" class="tabcontent" style="display: block;">
+            <form class="login-Form" th:action="@{/login}" method="post">
+                <h2>회원 로그인</h2>
+                <div class="login-Form-inner" th:object="${login}">
+                    <div class="idform">
+                        <!--name="studentID" id="id"-->
+                        <input type="text"  th:field="*{studentID}" placeholder="학번"><br>
+                    </div>
+                    <div class="pwform">
+                        <!--name="password" id="pw"-->
+                        <input type="password" th:field="*{password}" placeholder="비밀번호">
+                    </div>
+                    <button id="btn" type="submit"><strong>로그인</strong></button>
+                    <div class="links">
+                        <button class="links-btn" type="button" th:onclick="|location.href='@{/check}'|">
+                            <strong>회원가입</strong>
+                        </button>
+                    </div>
+                </div>
+                <button class="findBtn" id="findPassword" type="button" th:onclick="|location.href='@{/findPw}'|">
+                    <strong>비밀번호 재설정</strong>
+                </button>
+            </form>
+        </div>
+        <!-- 관리자 로그인 -->
+        <div id="tab2" class="tabcontent" style="display: none;">
+            <form class="login-Form" th:action="@{/adminLogin}" method="post">
+                <h2>관리자 로그인</h2>
+                <div class="login-Form-inner" th:object="${adminLogin}">
+                    <div class="idform">
+                        <!--name="studentID" id="adminId"-->
+                        <input type="text" id="id" th:field="*{clubId}" placeholder="학번"><br>
+                    </div>
+                    <div class="pwform">
+                        <!--name="password" id="adminPw"-->
+                        <input type="password" th:field="*{password}" placeholder="비밀번호">
+                    </div>
+                    <!--<button id="second-btn" type="submit"><strong>로그인</strong></button>-->
+                    <button id="second-btn" type="submit"><strong>로그인</strong></button>
+                    <div class="links">
+                        <button style="margin-top: 50px" class="links-btn" type="button" th:onclick="|location.href='@{/check/admin}'|">
+                            <strong>관리자 회원가입</strong>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

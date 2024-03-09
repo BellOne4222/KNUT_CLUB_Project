@@ -1,0 +1,171 @@
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding: 50px;
+}
+/* Left and right column */
+.column.side {
+    width: 25%;
+}
+/* Middle column */
+.column.middle {
+    width: 75%;
+    height: 100%;
+    min-height: 800px;
+}
+.column.middle h1{
+    margin-bottom: 30px;
+
+}
+.column.middle form{
+    margin-bottom: 10px;
+
+}
+.column.middle select{
+    width: 130px;
+    height: 30px;
+    font-size: 15px;
+    padding: 5px;
+}
+.column.middle input{
+    width: 50px;
+    height: 30px;
+    font-size: 15px;
+}
+.products {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    width: 100%;
+
+}
+
+.products img{
+    width: 250px;
+    height: 250px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    border: 2px solid #ccc;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.products img:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.products a{
+    text-decoration: none;
+    color: black;
+    float: left;
+    font-size: 16px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+
+}
+
+.products .name{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.products .name:hover{
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+.products .tag_wrap{
+    min-width: 290px;
+    min-height: 330px;
+    width: 290px;
+    height: 330px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+
+.price{
+    margin-top: 4px;
+    margin-bottom: 80px;
+    font-size: 0;
+    font-size: 15px;
+
+}
+.clearfix{
+    clear: both;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+
+/* sidemenu */
+.sidewrapper{
+    padding: 30px;
+    margin-top: 50px;
+}
+.box{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    height: 80px;
+    background-color: #eee;
+}
+
+.namebox{
+    border-bottom: 3px solid black;
+}
+
+.namebox h2{
+    padding-left: 10px;
+
+}
+
+#sidemenuname{
+    text-decoration: none;
+    text-align: center;
+}
+
+.sidemenu{
+    padding: 0;
+}
+
+.sidemenu li{
+    list-style: none;
+    border-bottom: 1px solid rgb(109, 13, 13);
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.sidemenu a{
+    text-decoration: none;
+    color: black;
+}
+
+.sidemenu #now{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+

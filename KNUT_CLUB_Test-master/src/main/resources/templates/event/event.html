@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>동아리 행사</title>
+    <link rel="stylesheet" href="/css/event.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="row">
+    <div class="column side">
+        <div class="sidewrapper">
+            <div class="namebox">
+                <h2 id="sidemenuname">
+                    Menu
+                </h2>
+            </div>
+            <ul class="sidemenu">
+                <li id="now"><a href="/event">동아리 행사</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="column middle">
+        <h1>동아리 행사</h1>
+            <form action="/event">
+                <select name="campus">
+                    <option value="" th:selected="${#strings.equals(param.campus, 'campus')}">캠퍼스 선택</option>
+                    <option value="충주" th:selected="${#strings.equals(param.campus, 'chungju')}">충주</option>
+                    <option value="증평" th:selected="${#strings.equals(param.campus, 'jeungpyeong')}">증평</option>
+                    <option value="의왕" th:selected="${#strings.equals(param.campus, 'uiwang')}">의왕</option>
+                    <option value="전국" th:selected="${#strings.equals(param.campus, 'nationwide')}">전국</option>
+                </select>
+                <select name="type">
+                    <option value="">종류 선택</option>
+                    <option value="대회">대회</option>
+                    <option value="공연">공연</option>
+                </select>
+                <input type="submit" value="조회">
+            </form>
+            <div class="products">
+                <th:block th:each="n : ${list}">
+                <div class="image_wrap">
+                    <a th:href="@{/event/detail(num=${n.num})}">
+                        <th:block th:if="${not #strings.isEmpty(n.img)}">
+                            <img th:src="${n.img}">
+                        </th:block>
+                        <th:block th:if="${#strings.isEmpty(n.img)}">
+                            <img src="/img/event/event.jpg">
+                        </th:block>
+                        <p class="name" th:text="${n.name}"></p>
+                    </a>
+                </div>
+                </th:block>
+                <div class="clearfix"></div>
+            </div>
+    </div>
+</div>
+
+<!-- footer -->
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

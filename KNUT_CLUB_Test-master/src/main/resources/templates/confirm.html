@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script th:inline="javascript">
+
+        var message = [[${message}]];
+        var url = [[${url}]];
+
+        if(confirm(message) == true) {
+            location.replace(url);
+        }
+        else {
+        }
+    </script>
+</body>
+</html>

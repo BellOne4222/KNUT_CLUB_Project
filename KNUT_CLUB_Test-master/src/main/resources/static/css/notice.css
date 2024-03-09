@@ -1,0 +1,191 @@
+
+/* noticebox */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid rgb(109, 13, 13);
+}
+
+th, td:hover{
+  cursor: pointer;
+}
+
+td :hover{
+  cursor: pointer;
+}
+
+#tableheader{
+  border-top: 3px solid rgb(109, 13, 13);
+  border-bottom: 2px solid rgb(109, 13, 13);
+  background-color: #eee;
+}
+tr:hover {
+  background-color: #ddd;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+
+}
+/* Left and right column */
+.column.side {
+  width: 20%;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+}
+
+.column .side .ul .li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side h2{
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 3px solid rgb(109, 13, 13);
+}
+/* Middle column */
+.column.middle {
+  width: 60%;
+  margin-left: 50px;
+}
+
+
+/* sidemenu */
+.sidemenu{
+
+  width: 200px;
+  
+}
+
+.noticebtn button{
+  color: white;
+}
+
+.sidemenu li{
+  border-bottom: 1px solid rgb(109, 13, 13);
+  text-align: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 15px;
+}
+
+.sidemenu #now{
+  font-weight: bold;
+  font-size: 25px;
+}
+.column.middle h1{
+  margin-bottom: 50px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column.side, .column.middle {
+      width: 100%;
+  }
+}
+/*search bar*/
+.col-md-8.mb-3{
+  margin-bottom: 10px;
+}
+input[type=text]{
+  height: 30px;
+  border: 1px solid black;
+  width: 250px;
+}
+
+input[type=submit]{
+  height: 30px;
+  width: 50px;
+  padding: 5px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+input[type=submit]:hover{
+  background: wheat;
+  cursor: pointer;
+  box-shadow: 0 2px 4px wheat;
+
+}
+
+#searchBox{
+  height: 30px;
+  border: 1px solid black;
+}
+
+#writebtn{
+  width: 70px;
+  height: 40px;
+  padding: 7px;
+  border: 2px solid black;
+  background-color: white;
+  margin-left: 380px;
+}
+
+#writebtn:hover{
+  background-color: #8e8e8e;
+  cursor: pointer;
+
+}
+
+#deletebtn{
+  width: 70px;
+  height: 40px;
+  padding: 7px;
+  border: 2px solid black;
+  background-color: white;
+
+}
+
+#deletebtn:hover{
+  background-color: #8e8e8e;
+  cursor: pointer;
+}
+
+.pagingwrap{
+  list-style-type: none;
+  float: left;
+  margin-left: 1100px;
+
+}
+
+.pagingwrap li{
+  list-style-type: none;
+  float: left;
+  margin-right: 10px;
+  font-size: 20px;
+
+}
+
+.pagingwrap .moving{
+  font-size: 20px;
+}
+
+.pagingwrap li:hover{
+  cursor: pointer;
+}
+
+.margin-top{
+  margin-bottom: 200px;
+  margin-top: 100px;
+}
+
+.bottom{
+  margin-bottom: 200px;
+}

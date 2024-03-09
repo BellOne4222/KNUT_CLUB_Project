@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Perfect</title>
+    <link rel="stylesheet" href="/css/clubdetail.css">
+    <meta charset="utf-8">
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+
+<div class="row" th:each="e : ${eventList}">
+    <div class="rightcolumn">
+        <div class="card">
+            <div class="clubimg">
+<!--                <img src="/img/perfect.jpg">-->
+                <th:block th:if="${not #strings.isEmpty(e.img)}">
+                    <img th:src="${e.img}">
+                </th:block>
+                <th:block th:if="${#strings.isEmpty(e.img)}">
+                    <img src="/img/event/event.jpg">
+                </th:block>
+<!--                <img th:src="${e.img}">-->
+            </div>
+            <h2 th:text="${e.name}" name="name"></h2>
+        </div>
+
+    </div>
+    <div class="leftcolumn">
+        <div class="card">
+            <h2 th:text="${e.name}"></h2>
+            <div class="main">
+<!--                <h3>#중앙동아리 #스포츠 #테니스</h3>-->
+<!--                <br>-->
+<!--                <br>-->
+<!--                    교통대 유일무이 테니스 동아리 퍼펙트<br>-->
+
+<!--                    대표자 : 신현식<br>-->
+<!--                    <br>-->
+<!--                    개설년도 : 1979년<br>-->
+<!--                    <br>-->
+<!--                    정원 : 54명-->
+<!--                    <br>-->
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="main">
+                <p th:text="${e.promotion}"></p>
+<!--                <h3>교통대 테니스 동아리 퍼펙트🎾</h3><br>-->
+<!--                <br>-->
+<!--                <p>주 2회(2시간) 정기모임 : 정기모임의 경우 자유롭게 공도 치고 선수출신 회장님이 직접 레슨을 진행합니다.<br>-->
+<!--                    <br>-->
+<!--                    다양한 행사도 준비되어 있습니다!<br>-->
+<!--                    <br>-->
+<!--                    Ex) 동아리 랭킹전, 건국대 교류전, OB 교류전, 동아리 MT, 전국 대학 테니스 동아리 대회 등</p>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+</body>
+</html>

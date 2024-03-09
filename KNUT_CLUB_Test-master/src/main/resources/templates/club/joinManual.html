@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>가입 방법</title>
+  <link rel="stylesheet" href="/css/joinManual.css">
+  <meta charset="utf-8">
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+
+<div class="row">
+  <div class="rightcolumn">
+    <div class="card">
+      <div class="namebox">
+        <h2 id="sidemenuname">
+          Menu
+        </h2>
+      </div>
+      <ul class="sidemenu">
+        <li><a href="/clubJoin">조회 및 가입</li>
+        <li id="now"><a href="/joinManual">가입 방법</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="leftcolumn">
+    <div class="card">
+      <h2><a href="/joinManual">가입 방법</h2>
+      <div class="mainimg">
+        <img th:src="@{/img/joinManual/joinManual.png}">
+      </div>
+    </div>
+    <div class="card">
+      <h2>중앙동아리 가입 방법</h2>
+      <div class="center">
+
+        <h3>중앙동아리 등록 조건</h3><br>
+        <p>
+          1. 회원이 3개 학과 이상이며 회원수 20명 이상 학생회비 납부 되어야 함.<br>
+          <br>
+          2. 지도교수의 승인이 필요하며 제반 등록서류를 제출하여야 함.<br>
+          <br>
+          3. 매 학년도 3월 31일까지 제출(양식은  KNUT-CLUB 공지사항에 비치)
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- footer -->
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

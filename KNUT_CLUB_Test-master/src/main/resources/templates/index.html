@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>KNUT_CLUB</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</head>
+
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+<th:block th:insert="fragments/sidebar :: sideBarFragment"></th:block>
+
+<!-- 슬라이드 박스 -->
+<div class="slidebox">
+    <input type="radio" name="slide" id="slide01" checked>
+    <input type="radio" name="slide" id="slide02">
+    <input type="radio" name="slide" id="slide03">
+    <input type="radio" name="slide" id="slide04">
+    <input type="radio" name="slide" id="slide05">
+    <input type="radio" name="slide" id="slide06">
+    <input type="radio" name="slide" id="slide07">
+    <ul class="slidelist">
+        <li class="slideitem">
+            <div>
+                <label for="slide04" class="left"></label>
+                <label for="slide02" class="right"></label>
+                <a><img src="/img/index/main1.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide01" class="left"></label>
+                <label for="slide03" class="right"></label>
+                <a><img src="/img/index/main2.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide02" class="left"></label>
+                <label for="slide04" class="right"></label>
+                <a><img src="/img/index/main3.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide03" class="left"></label>
+                <label for="slide01" class="right"></label>
+                <a><img src="/img/index/main4.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide03" class="left"></label>
+                <label for="slide01" class="right"></label>
+                <a><img src="/img/index/main5.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide03" class="left"></label>
+                <label for="slide01" class="right"></label>
+                <a><img src="/img/index/main6.png"></a>
+            </div>
+        </li>
+        <li class="slideitem">
+            <div>
+                <label for="slide03" class="left"></label>
+                <label for="slide01" class="right"></label>
+                <a><img src="/img/index/main7.png"></a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <!-- 공지사항 -->
+    <div class="column middle">
+        <h2>공지사항</h2>
+        <table class="noticetable">
+            <tr class="Tableh">
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회</th>
+            </tr>
+            <tbody>
+            <tr th:each="n : ${noticeList}">
+                <input type="hidden" name="n" th:value="${n.num}">
+                <td th:onclick="|location.href='@{/notice/detail(num=${n.num})}'|" th:text="${n.n}">번호</td>
+                <td th:onclick="|location.href='@{/notice/detail(num=${n.num})}'|" th:text="${n.title }">제목</td>
+                <td th:onclick="|location.href='@{/notice/detail(num=${n.num})}'|" th:text="${n.writer}">작성자</td>
+                <td th:onclick="|location.href='@{/notice/detail(num=${n.num})}'|" th:text="${n.date}">작성일</td>
+                <td th:onclick="|location.href='@{/notice/detail(num=${n.num})}'|" th:text="${n.views}">조회수</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 자유게시판 -->
+    <div class="column middle">
+        <h2>자유게시판</h2>
+        <table class="noticetable">
+            <tr class="Tableh">
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회</th>
+            </tr>
+            <tbody>
+            <tr th:each="b : ${boardList}">
+                <input type="hidden" name="n" th:value="${b.num}">
+                <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.n}">번호</td>
+                <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.title }">제목</td>
+                <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.writer}">작성자</td>
+                <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.date}">작성일</td>
+                <td th:onclick="|location.href='@{/board/detail(num=${b.num})}'|" th:text="${b.views}">조회수</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- footer -->
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+</body>
+</html>

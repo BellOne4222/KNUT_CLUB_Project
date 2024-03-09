@@ -1,0 +1,87 @@
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+    padding-left: 20px;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+
+}
+
+.box{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+    height: 80px;
+    background-color: #eee;
+}
+
+.namebox{
+    border-bottom: 3px solid black;
+}
+
+.namebox h2{
+    padding-left: 10px;
+
+}
+
+#sidemenuname{
+    text-decoration: none;
+    text-align: center;
+}
+
+.sidemenu li{
+    border-bottom: 1px solid rgb(109, 13, 13);
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.sidemenu #now{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 3px solid #bbb;
+}
+.card h2{
+    padding-bottom: 30px;
+    text-decoration: underline;
+    text-underline-offset : 10px;
+
+}
+.card p{
+    font-weight: bold;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+}
+

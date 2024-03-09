@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>회원 목록</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/memberListDetail.css}">
+</head>
+<body>
+
+<th:block th:insert="fragments/header :: headerFragment"></th:block>
+<th:block th:insert="fragments/sidebar :: sideBarFragment"></th:block>
+
+<div class="row">
+    <div class="column side">
+    </div>
+    <div class="column middle" th:each="p : ${profile}">
+            <div class="profileZone" style="margin-top: 100px;">
+                <div class="proPicture" style="text-align: center;">
+                    <img th:if="${#strings.isEmpty(p.img)}" src="/img/mypage/profile2.PNG" id="img" style="margin-bottom: 20px; width: 200px; height: 200px;" />
+                    <img th:if="${not #strings.isEmpty(p.img)}" th:src="${p.img}" id="img" style="margin-bottom: 20px; width: 200px; height: 200px;" />
+                </div>
+            </div>
+            <table class="table-fill">
+                <thead>
+                <tr>
+                    <th class="text-left"></th>
+                    <th class="text-left"></th>
+                </tr>
+                </thead>
+                <tbody class="table-hover">
+                <tr>
+                    <td class="text-left">이름</td>
+                    <td class="text-left" th:text="${p.name}" >김종원</td>
+                </tr>
+                <tr>
+                    <td class="text-left">학번</td>
+                    <td class="text-left" th:text="${p.studentId}" >1726010</td>
+                </tr>
+                <tr>
+                    <td class="text-left">이메일</td>
+                    <td class="text-left" th:text="${p.email}" >kng05310@naver.com</td>
+                </tr>
+                <tr>
+                    <td class="text-left">전화번호</td>
+                    <td class="text-left" th:text="${p.phone}">01033504222</td>
+                </tr>
+                <tr>
+                    <td class="text-left">학과</td>
+                    <td class="text-left" th:text="${p.department}" >컴퓨터공학과</td>
+                </tr>
+                <tr>
+                    <td class="text-left">생년월일</td>
+                    <td class="text-left" th:text="${p.birth}">980729</td>
+                </tr>
+                <tr>
+                    <td class="text-left">주소</td>
+                    <td class="text-left" th:text="${p.address}">경기도 고양시 덕양구 능곡로 13번길 16</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="btnZone">
+                <input type="button" value="목록" onclick="location.href='/memberList';"></input>
+                <input type="submit" id="delMember" value="삭제">
+            </div>
+    </div>
+    <div class="column side">
+    </div>
+</div>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/write.css">
+
+    <!-- summernote -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <!--    JavaScript-->
+    <script type="text/javascript" src="/js/summerNote.js"></script>
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+
+    <title>동아리 관리 프로그램</title>
+</head>
+<body>
+<article>
+    <div class="container" role="main">
+        <h2>자유게시판 글쓰기</h2>
+        <form name="form" id="form" role="form" method="post" action="/board/boardWrite" enctype="multipart/form-data" onsubmit="return writeCheck()">
+            <div class="mb-3">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+            </div>
+            <div class="mb-3">
+                <label for="writer">작성자</label>
+                <input type="text" class="form-control" name="writer" id="writer" th:value="${session.name}" readonly>
+                <input type="checkbox" th:field="${anonymous.chk}" th:text="익명">
+            </div>
+            <div>
+                <label>첨부파일</label>
+                <input type="file" name="attachFile" >
+            </div>
+            <div>
+                <textarea id="summernote" name="content" ></textarea>
+            </div>
+            <script>
+                $('summernote').val("${content.SUMMERNOTE}");
+                $('#summernote').summernote({
+                    placeholder: '내용',
+                    tabsize: 2,
+                    height: 300,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
+                    ]
+                });
+            </script>
+            <div class="writeBtn">
+                <!-- onclick="location.href='/VIEW/noticeWrite/noticeWrite'" -->
+                <button type="submit" class="btn float-right btn btn-sm btn-primary" id="btnSave">저장</button>
+                <button type="button" class="btn float-right btn btn-sm btn-primary" style="margin-right: 10px;" onclick="location.href='/board'" id="btnList">목록</button>
+            </div>
+        </form>
+    </div>
+</article>
+
+</body>
+<script>
+    function change()
+    {
+        document.getElementById("writer").value="익명";
+    }
+    // function change() // no ';' here
+    // {
+    //     if (this.value=="익명") this.value = "writer";
+    //     else this.value = "익명";
+    // }
+</script>
+</html>

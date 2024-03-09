@@ -1,0 +1,500 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial;
+    padding: 0;
+    background: #f1f1f1;
+}
+/* Header/Blog Title */
+.header {
+    padding: 30px;
+    text-align: center;
+    background: white;
+}
+.header h1 {
+    font-size: 50px;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 100%;
+}
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 100px;
+    margin-top: 20px;
+}
+/* detaimheader */
+.detailheader{
+    border-top: 2px solid black;
+    border-bottom: 2px solid gray;
+    background: #f7f7f7;
+    padding: 30px;
+}
+.detailheader h2{
+    display: inline-block;
+}
+.detailheader .detailheaderlist{
+    display: inline-block;
+}
+
+.detailheader ul, li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.list{
+    background-color: white;
+    border-bottom: 1px solid gray;
+    padding: 20px;
+}
+.detailheaderlist{
+    margin-left: 7px;
+}
+.detailheaderlist li{
+    padding-bottom: 10px;
+}
+/* detailcontent */
+.attached_file{
+    border-bottom: 1px solid gray;
+    padding: 20px;
+}
+.detailcontent{
+    border-bottom: 1px solid gray;
+}
+.detailcontent p{
+    padding: 10px;
+}
+.detailcontent{
+    padding: 20px;
+}
+.detailcontent p{
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+/* detailfooter */
+.detailfooter button{
+    margin-top: 20px;
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    float: right;
+    border: 2px solid black;
+
+}
+
+.detailfooter button:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Footer */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+}
+
+/* header */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+
+}
+
+
+
+.picture {
+    background-color: white;
+    text-align: center;
+}
+
+.picture img{
+    width: 100%;
+    height: 700px;
+}
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: rgb(109, 13, 13);
+}
+/* Style the topnav links */
+.topnav a {
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-right: 20px;
+}
+/* Change color on hover */
+.topnav a:hover {
+    background-color: white;
+    color: black;
+}
+
+/* search bar */
+
+.topnav .search-container {
+    float: right;
+    margin-right: 20px;
+}
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+
+.topnav .search-container button {
+    float: right;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+}
+
+.topnav .search-container button:hover {
+    background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav .search-container {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+#searchicon{
+    height: 30px;
+}
+.navbar {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.navbar .logo{
+    width: 25%;
+    display: inline;
+    margin-right: 350px;
+
+
+
+}
+.navbar .logo img{
+    width: 200px;
+    height: 100px;
+}
+/* navigaionbar */
+* {
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color:black;
+}
+
+#menu {
+    font:bold 20px "malgun gothic";
+    width:900px;
+    height:50px;
+    background: white;
+    color:black;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+#menu > ul > li {
+    float:left;
+    width:140px;
+    position:relative;
+
+}
+#menu > ul > li > ul {
+    width:130px;
+    display:none;
+    position: absolute;
+    font-size:14px;
+    background: white;
+    border: 3px solid rgb(109, 13, 13);
+
+}
+#menu > ul > li:hover > ul {
+    display:block;
+
+}
+#menu > ul > li > ul > li:hover {
+    background: #ddd;
+    transition: ease 1s;
+}
+
+/* sideBar */
+* {
+    padding:0;
+    margin:0;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+input[id="menuicon"] {
+    display:none;
+}
+input[id="menuicon"] + ul {
+    display:block;
+    position:fixed;
+    right:0;top:10%;
+    transform:translateY(-50%);
+    transition:all .35s;
+    text-align:right;
+}
+input[id="menuicon"] + ul > li {
+    display:block;
+    width:50px;
+    height:50px;
+    border:1px solid #f1f1f1;
+    position:relative;
+    margin-top:-1px;
+}
+input[id="menuicon"] + ul > li > a {
+    display:block;
+    width:auto;
+    height:50px;
+    overflow:hidden;
+    transition:all .35s;
+}
+input[id="menuicon"] + ul > li > label {
+    display:block;
+    cursor:pointer;
+    width:auto;
+    height:50px;
+    background:#dadada;
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span {
+    display:block;
+    position:absolute;
+    width:50%;
+    height:3px;
+    border-radius:30px;
+    background:#333;
+    transition:all .35s;
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(1) {
+    top:30%;
+    left:50%;
+    transform:translateX(-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(2) {
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom:30%;
+    left:50%;
+    transform:translateX(-50%);
+}
+input[id="menuicon"] + ul > li:nth-child(2) a .icon {
+    background:url('./img/search.png') center center no-repeat;
+    background-size:50%;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    vertical-align:middle;
+}
+input[id="menuicon"] + ul > li:nth-child(3) a .icon {
+    background:url('./img/sand-clock.png') center center no-repeat;
+    background-size:50%;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    vertical-align:middle;
+}
+input[id="menuicon"]:checked + ul {
+    z-index:2;
+    right:300px;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label {
+    z-index:2;
+    right:300px;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(1) {
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(2) {
+    opacity:0;
+}
+input[id="menuicon"]:checked + ul > li:nth-child(1) label span:nth-child(3) {
+    bottom:50%;
+    left:50%;
+    transform:translate(-50%,50%) rotate(-45deg);
+}
+div[class="sidebar"] {
+    width:300px;
+    height:100%;
+    background: rgb(244, 242, 242);
+    position:fixed;
+    top:0;
+    right:-300px;
+    z-index:1;
+    transition:all .35s;
+}
+input[id="menuicon"]:checked + ul + div {
+    right:0;
+}
+.sidebar .profile{
+    background-color: rgb(109, 13, 13);
+    text-align: center;
+    height: 200px;
+    margin-top: 30px;
+    border-bottom: 10px solid gray;
+}
+.sidebar .profile img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+
+}
+.sidebar .profile h1{
+    color: black;
+    margin: 10px 0 5px;
+    padding-bottom: 10px;
+}
+.sidebar .profile h2{
+    color: black;
+    font-size: 14px;
+    padding-bottom: 10px;
+}d
+.sidebar ul li a{
+    display: block;
+    padding: 13px 30px;
+
+    color: black;
+    font-size: 16px;
+    position: relative;
+}
+.sidebar ul li a .icon{
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.sidebar ul li a:hover{
+    color: black;
+    background:white;
+    border-right: 2px solid black;
+}
+.sidebar ul li a:hover .icon,
+.sidebar ul li a.active .icon{
+    color: #0c7db1;
+}
+.sidebar ul li a:hover:before,
+.sidebar ul li a.active:before{
+    display: block;
+}
+
+.profile button{
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 4px gray;
+}
+.profile button:focus{
+    outline:0;
+}
+.profile button:hover{
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 4px wheat;
+}
+.profile h2{
+    margin-bottom: 20px;
+}
+.profile p{
+    margin-bottom: 50px;
+}
+
+.login{
+    margin-right: 20px;
+}
+
+/* 조회수 */
+button{
+    min-width: 40px;
+    min-height: 40px;
+    background: none;
+    border: none;
+}
+
+.thimg{
+    width: 30px;
+    height: 30px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.thimg:hover{
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lnag="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>자세한 페이지</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/noticedetail.css">
+    <script type="text/javascript" th:src="@{/js/confirm.js}"></script>
+
+</head>
+<body>
+<th:block th:replace="fragments/header :: headerFragment"></th:block>
+<th:block th:replace="fragments/sidebar :: sideBarFragment"></th:block>
+
+<form th:action="@{/delNotice}" method="post" onsubmit="return deleteCheck()">
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card" th:each="n : ${noticeList}">
+                <input type="hidden" name="del_id" th:value="${n.num}">
+                <div class="detailheader">
+                    <h2 th:text="${n.title }">제목</h2>
+                    <div class="list">
+                        <ul class="detailheaderlist">
+                            <li th:text="'작성자:' + ${n.writer}">작성자></li>
+                            <li th:text="'조회수:' + ${n.views}">조회 수</li>
+                            <li th:text="'등록일:' + ${n.date}">작성일></li>
+                        </ul>
+                    </div>
+                </div><!---->
+                <div class="detailcontent" style="height:auto; ">
+                    <th:block th:if="${not #strings.isEmpty(n.img)}">
+                        <img th:if="${n.img} != '/attachFile/'" th:src="${n.img}" style="width: 700px; height: 500px; border-radius: 10px; margin-top: 40px; margin-bottom: 20px; margin-right: 20px;"  />
+                    </th:block>
+                    <p class="noticect" th:utext="${n.content}">글 내용</p>
+                </div>
+                <div th:if="${writer == name}">
+                    <button type="submit" th:text="삭제"></button>
+                    <button type="button" th:onclick="|location.href='@{/notice/update(num=${n.num})}'|"
+                            th:text="수정"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<th:block th:insert="fragments/footer :: footerFragment"></th:block>
+</body>
+</html>

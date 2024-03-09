@@ -1,0 +1,186 @@
+.column {
+    float: left;
+    padding: 10px;
+}
+/* Left and right column */
+.column.side {
+    width: 25%;
+    margin-top: 100px;
+}
+.column.side h2{
+    text-align: center;
+}
+/* Middle column */
+.column.middle {
+    width: 70%;
+
+}
+
+.column.middle h1{
+    margin-bottom: 50px;
+}
+
+.column.middle .search{
+    margin-bottom: 20px;
+}
+
+table {
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th {
+    text-align: left;
+}
+
+thead {
+    font-weight: bold;
+    color: #fff;
+    background: #73685d;
+}
+
+td, th {
+    padding: 1em .5em;
+    vertical-align: middle;
+}
+
+td {
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    background: #fff;
+}
+
+.open a{
+    margin-left: 30px;
+}
+
+a {
+    color: #73685d;
+    text-decoration: none;
+}
+.table_footer{
+    margin-top: 50px;
+    height: 100px;
+}
+
+.table_footer .btns{
+    float: right;
+}
+
+.btns input{
+    width: 60px;
+    height: 30px;
+    padding: 3px;
+    background: #73685d;
+    color: white;
+    border: white;
+    transition: 0.35s;
+}
+
+
+.btns input:hover{
+    text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626;
+
+}
+
+@media all and (max-width: 768px) {
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    th {
+        text-align: right;
+    }
+
+    table {
+        position: relative;
+        padding-bottom: 0;
+        border: none;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+
+    thead {
+        float: left;
+        white-space: nowrap;
+    }
+
+    tbody {
+        overflow-x: auto;
+        overflow-y: hidden;
+        position: relative;
+        white-space: nowrap;
+    }
+
+    tr {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    th {
+        border-bottom: 1px solid #a39485;
+    }
+
+    td {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column.side, .column.middle {
+        width: 100%;
+    }
+}
+
+.now{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.sideMenu{
+    height: 100px;
+    border-radius: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.sideMenu ul{
+    padding: 10px;
+}
+
+.pagingwrap li{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.sideMenu li{
+    list-style: none;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 50px;
+    border-bottom: 2px solid black;
+    padding-bottom: 5px;
+}
+
+.pagingwrap{
+    margin-left: 700px;
+}
+
+.margin-top{
+    margin-top: 50px;
+}
+
