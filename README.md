@@ -1,5 +1,8 @@
 ### **Team Github Link**
 - https://github.com/Rjw510/KNUT_CLUB_Test
+
+### **Project Info Link**
+- https://elastic-caraway-da9.notion.site/KNUT_CLUB-6bc3af12817042df8720fe6aaf593889?pvs=74
   
 ## Knut-Club (대학교 동아리 플랫폼 웹사이트) (2022.01 ~ 2022.10)
 
